@@ -8,10 +8,11 @@ global _start
 _start:
     mov     dx,     0
     mov     ax,     word[num1]      ;ax = num1 = 7530h
-    sub     ax,     word[num2]      ;ax = ax - num2 = -2710
-    sbb     dx,     0
-    mov     word[dif+0],    ax      
-    mov     word[dif+2],    dx
+    sub     ax,     word[num2]      ;ax = num1 - num2 = D8FOh
+    sbb     dx,     0               ;dx = -1 = ffffh
+    mov     word[dif+0],    ax      ;dif[0:2] = ax = D8F9h
+    mov     word[dif+2],    dx      ;dif[2:4] = dx = FFFFh
+                                    ;dif = -10000 = FFFFD8F9h
 
     mov rax, 60
     mov rdi, 0
